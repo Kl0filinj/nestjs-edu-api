@@ -1,5 +1,6 @@
 {
   "rules": {
+    "indent": [true, 4],
     "no-var-requires": true,
     "no-any": true,
     "promise-function-async": true,

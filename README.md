@@ -71,3 +71,5 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+"@typegoose/typegoose": "11.0.2",
+        "nestjs-typegoose": "^7.1.38",
