@@ -11,9 +11,6 @@ class Productcharacteristic {
 
 @Schema({ timestamps: true })
 export class ProductModel {
-    @Prop({ type: mongoose.Types.ObjectId })
-    _id: string;
-
     @Prop()
     image: string;
 

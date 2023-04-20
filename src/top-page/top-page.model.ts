@@ -32,9 +32,6 @@ export class TopPageAdvantage {
 
 @Schema({ timestamps: true })
 export class TopPageModel {
-    @Prop({ type: mongoose.Types.ObjectId })
-    _id: string;
-
     @Prop({ enum: TopLevelCategory })
     firstCategory: TopLevelCategory;
 

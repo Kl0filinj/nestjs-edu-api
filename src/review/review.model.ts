@@ -3,9 +3,6 @@ import mongoose, { Document } from 'mongoose';
 
 @Schema({ timestamps: true })
 export class ReviewModel {
-    @Prop({ type: mongoose.Types.ObjectId })
-    _id: string;
-
     @Prop()
     name: string;
 
@@ -19,7 +16,7 @@ export class ReviewModel {
     rating: number;
 
     @Prop()
-    createdAt: Date;
+    productId: mongoose.Types.ObjectId;
 }
 
 export type ReviewDocument = ReviewModel & Document;
