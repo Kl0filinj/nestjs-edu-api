@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ReviewDocument, ReviewModel } from './review.model';
-import { Model } from 'mongoose';
+import mongoose, { Model } from 'mongoose';
 import { CreateReviewDto } from './dto/createReview.dto';
 import { InjectModel } from '@nestjs/mongoose';
 
@@ -12,15 +12,19 @@ export class ReviewService {
     ) {}
 
     async create(dto: CreateReviewDto): Promise<ReviewDocument> {
-        return this.reviewModel.create(dto);
+        const newReview = {
+            ...dto,
+            productId: new mongoose.Types.ObjectId(dto.productId),
+        };
+        return await this.reviewModel.create(newReview);
     }
 
     async delete(id: string): Promise<ReviewDocument> | null {
-        return this.reviewModel.findByIdAndDelete(id).exec();
+        return await this.reviewModel.findByIdAndDelete(id).exec();
     }
 
     async findByProductId(productId: string): Promise<ReviewDocument[]> {
-        return this.reviewModel
+        return await this.reviewModel
             .find({
                 productId,
                 // МОЖЕТ БЫТЬ ОШИБКА ПОТОМУ ЧТО ОРИГИНАЛЬНАЯ СТРОКА ВЫГЛЯДИТ ТАК: productId: Types.ObjectId(productId)

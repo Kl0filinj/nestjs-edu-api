@@ -1,9 +1,4 @@
-import {
-    HttpCode,
-    HttpException,
-    HttpStatus,
-    Injectable,
-} from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { UserModel } from './user.model';
 import { Model } from 'mongoose';
@@ -42,7 +37,7 @@ export class AuthService {
     }
 
     async findUser(email: string): Promise<UserModel> {
-        return this.userModel.findOne({ email }).exec();
+        return await this.userModel.findOne({ email }).exec();
     }
 
     async validateUser(
