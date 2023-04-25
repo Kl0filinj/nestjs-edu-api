@@ -8,7 +8,7 @@ import {
 import mongoose from 'mongoose';
 import { INCORRECT_ID_FORMAT } from './id-validation.constants';
 
-// @Injectable()
+@Injectable()
 export class IdValidationPipe implements PipeTransform {
     transform(value: string, metadata: ArgumentMetadata) {
         if (metadata.type !== 'param') {

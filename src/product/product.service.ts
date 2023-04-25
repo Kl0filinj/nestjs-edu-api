@@ -4,8 +4,6 @@ import { ProductModel } from './product.model';
 import { Model } from 'mongoose';
 import { CreateProductDto } from './dto/create-product.dto';
 import { FindProductDto } from './dto/find-product.dto';
-import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
-
 @Injectable()
 export class ProductService {
     constructor(
