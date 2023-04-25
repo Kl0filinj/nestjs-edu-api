@@ -8,6 +8,7 @@ import { ReviewModule } from './review/review.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { LoggerModule } from 'nestjs-pino';
+import { FilesModule } from './files/files.module';
 
 @Module({
     imports: [
@@ -51,6 +52,7 @@ import { LoggerModule } from 'nestjs-pino';
                 },
             },
         }),
+        FilesModule,
     ],
     controllers: [AppController],
     providers: [AppService],

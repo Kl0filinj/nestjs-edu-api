@@ -35,6 +35,7 @@ export class ReviewController {
         if (!deletedDoc) {
             throw new HttpException(REVIEW_NOT_FOUND, HttpStatus.NOT_FOUND);
         }
+        return deletedDoc;
     }
 
     @UseGuards(JwtAuthGuard)

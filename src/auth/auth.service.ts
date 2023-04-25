@@ -37,7 +37,7 @@ export class AuthService {
     }
 
     async findUser(email: string): Promise<UserModel> {
-        return await this.userModel.findOne({ email }).exec();
+        return await this.userModel.findOne({ email });
     }
 
     async validateUser(

@@ -49,10 +49,10 @@ export class ProductController {
     @Delete(':id')
     async delete(@Param('id', IdValidationPipe) id: string) {
         const deletedProduct = await this.productService.deleteById(id);
-        console.log(deletedProduct);
         if (!deletedProduct) {
             throw new HttpException(PRODUCT_NOT_FOUND, HttpStatus.NOT_FOUND);
         }
+        return deletedProduct;
     }
 
     @UseGuards(JwtAuthGuard)
@@ -70,7 +70,6 @@ export class ProductController {
         return updatedProduct;
     }
 
-    @UseGuards(JwtAuthGuard)
     @UsePipes(new ValidationPipe())
     @HttpCode(200)
     @Post('find')

@@ -2,10 +2,10 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
 export enum TopLevelCategory {
-    Courses,
-    Services,
-    Books,
-    Products,
+    Courses = 'Courses',
+    Services = 'Services',
+    Books = 'Books',
+    Products = 'Products',
 }
 
 export class HhData {
@@ -66,3 +66,5 @@ export class TopPageModel {
 export type TopPageDocument = TopPageModel & Document;
 
 export const TopPageSchema = SchemaFactory.createForClass(TopPageModel);
+
+TopPageSchema.index({ '$**': 'text' });

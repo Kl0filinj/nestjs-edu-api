@@ -20,19 +20,17 @@ export class ReviewService {
     }
 
     async delete(id: string): Promise<ReviewDocument> | null {
-        return await this.reviewModel.findByIdAndDelete(id).exec();
+        return await this.reviewModel.findByIdAndDelete(id);
     }
 
     async findByProductId(productId: string): Promise<ReviewDocument[]> {
-        return await this.reviewModel
-            .find({
-                productId,
-                // МОЖЕТ БЫТЬ ОШИБКА ПОТОМУ ЧТО ОРИГИНАЛЬНАЯ СТРОКА ВЫГЛЯДИТ ТАК: productId: Types.ObjectId(productId)
-            })
-            .exec();
+        return await this.reviewModel.find({
+            productId,
+            // МОЖЕТ БЫТЬ ОШИБКА ПОТОМУ ЧТО ОРИГИНАЛЬНАЯ СТРОКА ВЫГЛЯДИТ ТАК: productId: Types.ObjectId(productId)
+        });
     }
 
     // async deleteByProductId(id: string): Promise<ReviewDocument> | null {
-    //     return this.reviewModel.deleteMany({ _id: id }).exec();
+    //     return this.reviewModel.deleteMany({ _id: id });
     // }
 }

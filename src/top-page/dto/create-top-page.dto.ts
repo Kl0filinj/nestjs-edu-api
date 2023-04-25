@@ -48,7 +48,6 @@ export class CreateTopPageDto {
     category: string;
 
     @IsOptional()
-    @IsArray()
     @ValidateNested()
     @Type(() => HhDataDto)
     hh?: HhDataDto;
