@@ -15,11 +15,11 @@ import {
 } from '@nestjs/common';
 import { TopPageModel } from './top-page.model';
 import { FindTopPageDto } from './dto/find-top-page.dto';
-import { IdValidationPipe } from 'src/pipes/id-validation.pipe';
+import { IdValidationPipe } from '../pipes/id-validation.pipe';
 import { CreateTopPageDto } from './dto/create-top-page.dto';
 import { TopPageService } from './top-page.service';
 import { TOP_PAGE_NOT_FOUND } from './top-page.constants';
-import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt.guard';
 
 @Controller('top-page')
 export class TopPageController {
@@ -53,8 +53,8 @@ export class TopPageController {
         return topPage;
     }
 
-    @UsePipes(new ValidationPipe())
     @HttpCode(200)
+    @UsePipes(new ValidationPipe())
     @Post('find')
     async find(@Body() dto: FindTopPageDto) {
         return this.topPageService.findByCategory(dto.firstCategory);

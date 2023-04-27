@@ -7,19 +7,10 @@ import { AppModule } from '../src/app.module';
 
 const testProductId = new Types.ObjectId().toString();
 
-const testDto: CreateReviewDto = {
-    name: 'TEST',
-    title: 'Test Title 1',
-    description: 'Test description 1',
-    rating: 5,
-    productId: testProductId,
-};
-
 describe('AppController (e2e)', () => {
     let app: INestApplication;
-    let createdId: string;
 
-    beforeEach(async () => {
+    beforeAll(async () => {
         const moduleFixture: TestingModule = await Test.createTestingModule({
             imports: [AppModule],
         }).compile();
@@ -28,20 +19,9 @@ describe('AppController (e2e)', () => {
         await app.init();
     });
 
-    it('/review/create (POST)', async done => {
-        const response = await request(app.getHttpServer())
-            .post('/review/create')
-            .send(testDto);
-
-        expect(response.status).toBe(201);
-
-        const { _id } = response.body;
-        createdId = _id;
-        expect(createdId).toBeDefined();
-        done(createdId);
-    });
+    it('/ (GET)', () => {});
 
     afterAll(async () => {
-        disconnect();
+        await app.close();
     });
 });

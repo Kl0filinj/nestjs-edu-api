@@ -31,8 +31,8 @@ export class TopPageService {
         category: TopLevelCategory,
     ): Promise<TopPageDocument[]> {
         return await this.topPageModel.find(
-            { category },
-            { alias: 1, secondCategory: 1, title: 1 },
+            { firstCategory: category },
+            { alias: 1, secondCategory: 1, title: 1, category: 1 },
         );
     }
 

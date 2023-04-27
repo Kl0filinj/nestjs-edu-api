@@ -18,8 +18,8 @@ import { FindProductDto } from './dto/find-product.dto';
 import { CreateProductDto } from './dto/create-product.dto';
 import { ProductService } from './product.service';
 import { PRODUCT_NOT_FOUND } from './product.constants';
-import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
-import { IdValidationPipe } from 'src/pipes/id-validation.pipe';
+import { JwtAuthGuard } from '../auth/guards/jwt.guard';
+import { IdValidationPipe } from '../pipes/id-validation.pipe';
 
 @Controller('product')
 export class ProductController {
