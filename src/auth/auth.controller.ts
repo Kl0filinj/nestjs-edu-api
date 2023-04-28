@@ -5,7 +5,6 @@ import {
     HttpException,
     HttpStatus,
     Post,
-    UseGuards,
     UsePipes,
     ValidationPipe,
 } from '@nestjs/common';

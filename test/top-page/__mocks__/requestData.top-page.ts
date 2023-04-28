@@ -65,8 +65,3 @@ export const testResponsePageDto = {
     updatedAt: expect.any(String),
     __v: expect.any(Number),
 };
-
-export const loginDto = {
-    login: 'alex123@gmail.com',
-    password: '12345',
-};

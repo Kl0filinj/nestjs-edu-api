@@ -10,7 +10,6 @@ import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from '../../src/auth/strategies/jwt.strategy';
 import { AuthModule } from '../../src/auth/auth.module';
 import {
-    loginDto,
     testAlias,
     testPageDto,
     testPageFindDto,
@@ -24,6 +23,11 @@ describe('[Feature] Top Page - /top-page', () => {
     let newPageId: mongoose.Types.ObjectId;
 
     const testPageSearchText = 'Books';
+
+    const loginDto = {
+        login: 'alex123@gmail.com',
+        password: '12345',
+    };
 
     beforeEach(async () => {
         const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -39,17 +43,8 @@ describe('[Feature] Top Page - /top-page', () => {
                         useUnifiedTopology: true,
                     }),
                 }),
-                PassportModule.register({ defaultStrategy: 'jwt' }),
-                JwtModule.registerAsync({
-                    imports: [ConfigModule],
-                    inject: [ConfigService],
-                    useFactory: async (configService: ConfigService) => ({
-                        secret: configService.get('JWT_SECRET'),
-                    }),
-                }),
                 AuthModule,
             ],
-            providers: [JwtStrategy],
         }).compile();
 
         app = moduleFixture.createNestApplication();
@@ -239,8 +234,6 @@ describe('[Feature] Top Page - /top-page', () => {
                 .expect(HttpStatus.BAD_REQUEST);
         });
     });
-
-    it.todo('Delete one [DELETE /:id]');
 
     afterEach(async () => {
         await disconnect();
